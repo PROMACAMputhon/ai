@@ -22,7 +22,7 @@ class room_tb(models.Model):
 
 class chatting_tb(models.Model):
     id = models.AutoField(primary_key=True)
-    answer = models.CharField(max_length=255)
+    answer = models.TextField()
     create_at = models.DateField(auto_now_add=True)
     question = models.CharField(max_length=255)
     room = models.ForeignKey(room_tb, on_delete=models.CASCADE)
