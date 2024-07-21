@@ -5,7 +5,7 @@ from langchain.text_splitter import CharacterTextSplitter
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_community.vectorstores import Chroma
 from langchain_community.document_loaders import PyPDFLoader
-from .template import kindness_eng, bold, info
+from .template import kindness_eng, bold, info, old
 
 def gemini_pdf(pdf):
     if pdf is "":
@@ -31,6 +31,8 @@ def chatbot_kind(question, chatting_type):
         user_prompt = ChatPromptTemplate.from_template(kindness_eng+"만약 동국대 내부 길 정보를 물어보면["+info+"]이 정보를 참고해서 알려줘."+"<Question>:{question}")
     elif chatting_type == 2:
         user_prompt = ChatPromptTemplate.from_template(bold + "<Question>:{question}")
+    elif chatting_type == 3:
+        user_prompt = ChatPromptTemplate.from_template(old+"<Question>:{question}")
     else:
         return None
     chain = (
